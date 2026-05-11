@@ -6,7 +6,7 @@ export default function App() {
       <main className="hero">
         <section className="hero-copy">
           <div className="logo">Bloom Realty Group</div>
-          <h1>Unlock <span className="pink">Builder&nbsp;Incentives</span> Near&nbsp;You</h1>
+          <h1>Unlock <span className="pink">Builder Incentives</span> Near You</h1>
           <p className="sub">See new homes, current incentives, and estimated payments that fit your budget.</p>
           <p className="small">
             Thinking about leaving your apartment? You may be closer to buying new than you think.

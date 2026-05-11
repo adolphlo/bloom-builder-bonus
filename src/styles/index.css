@@ -8,6 +8,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background: #fff7f8;
   color: #111;
+  overflow-x: hidden;
 }
 
 /* ─── Hero ─────────────────────────────────────────────── */
@@ -36,11 +37,12 @@ body {
 }
 
 h1 {
-  font-size: clamp(44px, 7vw, 82px);
+  font-size: clamp(36px, 9vw, 82px);
   line-height: 0.92;
   margin: 0 0 22px;
   letter-spacing: -2px;
   text-transform: uppercase;
+  overflow-wrap: break-word;
 }
 
 .pink { color: #d66f82; }
@@ -323,6 +325,14 @@ ul {
 @media (max-width: 480px) {
   .hero {
     padding: 20px;
+  }
+
+  .sub {
+    font-size: 20px;
+  }
+
+  .small {
+    font-size: 15px;
   }
 
   .card {
