@@ -79,6 +79,9 @@ export default function LeadForm() {
         <div className="success-icon">✓</div>
         <h2>You&rsquo;re all set, {fields.name.split(' ')[0]}!</h2>
         <p>Bobby will be in touch shortly with matching homes and current builder incentives in your area.</p>
+        <a href="https://www.bobbtherealtor.com" className="visit-site-link">
+          Visit bobbtherealtor.com &rarr;
+        </a>
       </div>
     )
   }
