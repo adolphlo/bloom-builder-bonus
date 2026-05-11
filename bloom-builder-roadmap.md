@@ -324,8 +324,8 @@ CNAME   bonus   adolphlo.github.io
 - [x] Fixed deploy workflow — switched from JamesIves branch action to GitHub Pages API
 - [x] Deployed to GitHub Pages via Actions workflow (green)
 - [x] Custom domain `bonus.bobbtherealtor.com` live with HTTPS
+- [x] Tested on real mobile device — fixed horizontal overflow (see Mobile Notes below)
 - [ ] Verify confirmation email/SMS fires in Zapier
-- [ ] Test full flow on a real mobile device (simulate QR scan)
 
 ### Phase 5 — QR Code
 - [ ] Generate QR code pointing to `https://bonus.bobbtherealtor.com`
@@ -341,5 +341,17 @@ CNAME   bonus   adolphlo.github.io
 - GitHub Pages is static only — all logic is client-side in React
 - `vite.config.js` base must be `'/'` since serving from a custom domain root
 - The `/public/CNAME` file is required on every deploy or GitHub Pages drops the custom domain
-- Mobile-first is non-negotiable — form must be fully usable at 375px viewport width
 - The `adolphlo.github.io/bloom-builder-bonus/` URL will always show a white page (assets are root-relative) — use `bonus.bobbtherealtor.com`
+
+## Mobile Notes
+
+Overflow issue discovered during real-device test and fixed:
+
+- **Root cause 1:** `&nbsp;` between words in the h1 (`Builder&nbsp;Incentives`) prevented the browser from wrapping "BUILDER INCENTIVES" — at 390px the string was wider than the viewport
+- **Root cause 2:** `clamp(44px, 7vw, 82px)` had a 44px hard floor — on mobile `7vw` resolves below 44px so the font never scaled down
+- **Fixes applied:**
+  - Removed `&nbsp;` from h1 — words wrap naturally now
+  - Changed clamp to `clamp(36px, 9vw, 82px)` — scales smoothly from ~35px at 390px up to 82px on desktop
+  - Added `overflow-wrap: break-word` to h1 as a safety net
+  - Added `overflow-x: hidden` to body to prevent horizontal scroll from any future overflow
+  - Reduced `.sub` to 20px and `.small` to 15px at the 480px breakpoint
